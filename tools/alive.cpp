@@ -36,6 +36,7 @@ static void show_help() {
           " -skip-smt\t\tSkip all SMT queries\n"
           " -disable-poison-input\tAssume input variables can never be poison\n"
           " -disable-undef-input\tAssume input variables can never be undef\n"
+          " -skip-ce-reduce\tSkip counterexample reduction after a failed check\n"
           " -single-vscale:x\tCheck scalable vectors at this one concrete vscale,\n"
           "\t\t\ta power of two (default: 2)\n"
           " -h / --help / -v / --version\tShow this help\n";
@@ -76,6 +77,8 @@ int main(int argc, char **argv) {
       config::skip_smt = true;
     else if (arg == "-disable-undef-input")
       config::disable_undef_input = true;
+    else if (arg == "-skip-ce-reduce")
+      config::skip_ce_reduction = true;
     else if (arg == "-disable-poison-input")
       config::disable_poison_input = true;
     else if (arg.compare(0, 15, "-single-vscale:") == 0 && arg.size() > 15) {

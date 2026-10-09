@@ -18,6 +18,7 @@ extern std::string smt_benchmark_dir;
 extern bool disable_poison_input;
 
 extern bool disable_undef_input;
+extern bool skip_ce_reduction;
 
 extern bool tgt_is_asm;
 

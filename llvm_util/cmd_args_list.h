@@ -39,6 +39,10 @@ llvm::cl::opt<bool> opt_disable_undef(LLVM_ARGS_PREFIX "disable-undef-input",
 llvm::cl::opt<bool> opt_disable_poison(LLVM_ARGS_PREFIX "disable-poison-input",
   llvm::cl::desc("Assume inputs are not poison (default=false)"),
   llvm::cl::init(false), llvm::cl::cat(alive_cmdargs));
+llvm::cl::opt<bool> opt_skip_ce_reduction(LLVM_ARGS_PREFIX "skip-ce-reduce",
+  llvm::cl::desc("Skip counterexample reduction (minimization) after a "
+                 "failed check (default=false)"),
+  llvm::cl::init(false), llvm::cl::cat(alive_cmdargs));
 
 llvm::cl::opt<bool> opt_fail_if_src_is_ub(
   LLVM_ARGS_PREFIX "fail-src-ub",

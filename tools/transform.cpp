@@ -229,7 +229,7 @@ static bool error(Errors &errs, State &src_state, State &tgt_state,
 
   // try to get out of undef first
   for (const auto &[var, value] : r.getModel()) {
-    if (var.fn_name().starts_with("isundef_")) {
+    if (var.fn_name().starts_with("isundef_") && !config::skip_ce_reduction) {
       reduce(var);
     }
   }
@@ -243,7 +243,7 @@ static bool error(Errors &errs, State &src_state, State &tgt_state,
     unique_model = tmpr.isUnsat();
   }
 
-  if (!unique_model) {
+  if (!unique_model && !config::skip_ce_reduction) {
     for (const auto &[var, value] : r.getModel()) {
       if (!var.fn_name().starts_with("isundef_")) {
         reduce(var);
