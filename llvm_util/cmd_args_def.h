@@ -12,6 +12,7 @@ config::tgt_unroll_cnt = opt_unrolling_factor;
 #endif
 config::disable_undef_input = opt_disable_undef;
 config::disable_poison_input = opt_disable_poison;
+config::skip_ce_reduction = opt_skip_ce_reduction;
 config::tgt_is_asm = opt_tgt_is_asm;
 config::fail_if_src_is_ub = opt_fail_if_src_is_ub;
 config::symexec_print_each_value = opt_se_verbose;
