@@ -532,9 +532,11 @@ Result Solver::check(const char *query_name, bool dont_skip) const {
     string_view reason = Z3_solver_get_reason_unknown(ctx(), s);
     if (reason == "timeout") {
       ++num_timeout;
+      cerr << "SMT query '" << query_name << "' timed out\n";
       return Result::TIMEOUT;
     }
     ++num_errors;
+    cerr << "SMT query '" << query_name << "' failed: " << reason << '\n';
     return { Result::ERROR, string(reason) };
   }
   default:
